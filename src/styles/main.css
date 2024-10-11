@@ -1,0 +1,110 @@
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+
+    user-select: none;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    background: rgb(206,2,181);
+    background: linear-gradient(144deg, rgba(206,2,181,1) 0%, rgba(168,5,185,1) 28%, rgba(63,5,144,1) 59%, rgba(7,12,166,1) 77%, rgba(0,5,255,1) 100%);
+
+    padding: 40px 60px;
+}
+
+h2 {
+    font-size: 3em;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+}
+
+.reset {
+    padding: 15px 20px;
+    width: 100%;
+
+    color: #000000;
+    background-color: #ffffff;
+
+    border: none;
+    letter-spacing: 0.1em;
+    font-size: 1.5em;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.game {
+    display: flex;
+    flex-flow: row wrap;
+
+    height: 430px;
+    max-width: 430px;
+    gap: 10px;
+
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.item {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #3a3a3a;
+    transition: 0.25s ease-in-out;
+    transform: translateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after,
+.boxMatch::after {
+    transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 550px) {
+    * {
+        font-size: 2.6vw;
+    }
+    .container, .container {
+        width: 100%;
+        padding: 15px 30px;
+    }
+
+    .item {
+        height: 18vw;
+        width: 18vw;
+    }
+}
